@@ -1,0 +1,15 @@
+<div style='width: 600px;'>
+	<div id="map" style='width: 600px; height: 500px;'></div>
+</div>
+<script>
+	handler = Gmaps.build('Google');
+	handler.buildMap({ provider: {}, internal: { id: 'map' } }, function() {
+		markers = handler.addMarkers(<%=raw @hash.to_json %>);
+		handler.bounds.extendWith(markers);
+		handler.fitMapToBounds();
+		// 初期位置
+		// handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
+		// 初期縮尺
+		// handler.getMap().setZoom(10);
+	});
+</script>

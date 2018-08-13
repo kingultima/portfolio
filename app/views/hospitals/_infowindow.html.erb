@@ -1,0 +1,11 @@
+病院名：<%= link_to hospital.name, hospital_path(hospital) %><br>
+
+住所：<%= hospital.address %><br>
+
+<%= image_tag('/assets/noimage1.PNG', { :size => '200x200'}) %><br>
+
+<div style="width: 250px;">
+<%= hospital.caption %>
+</div>
+
+<%= link_to "この施設へ行く" ,"https://www.google.com/maps/dir/?api=1&destination=#{hospital.latitude},#{hospital.longitude}",target: "_blank" %>
