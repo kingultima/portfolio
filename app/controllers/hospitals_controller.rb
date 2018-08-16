@@ -20,6 +20,7 @@ class HospitalsController < ApplicationController
   # GET /hospitals/new
   def new
     @hospital = Hospital.new
+    @practice_time = @hospital.practice_times.build
   end
 
   # GET /hospitals/1/edit
@@ -74,6 +75,6 @@ class HospitalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hospital_params
-      params.require(:hospital).permit(:name, :caption, :description, :address, :latitude, :longitude, :tel, :time_id, :hospital_image, :tag, pet: [], day: [])
+      params.require(:hospital).permit(:name, :caption, :description, :address, :latitude, :longitude, :tel, :time_id, :hospital_image, :tag, pet: [], day: [], practice_times_attributes: [:id, :start_time, :end_time, :_destroy])
     end
   end

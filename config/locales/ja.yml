@@ -4,7 +4,7 @@ ja:
       hospital:
         name: 病院名
         pet: 診療対象動物
-        day: 診療対象日
+        day: 診療日
         tel: 電話番号
         address: 住所
         latitude: 緯度

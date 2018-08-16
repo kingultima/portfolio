@@ -5,6 +5,9 @@ class Hospital < ApplicationRecord
 		self.pet.gsub!(/[\[\]\"]/, "") if attribute_present?("pet")
 	end
 
+	has_many :practice_times, inverse_of: :hospital
+    accepts_nested_attributes_for :practice_times, reject_if: :all_blank, allow_destroy: true
+
 	geocoded_by :address
 	after_validation :geocode, if: :address_changed?
 
