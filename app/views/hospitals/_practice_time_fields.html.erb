@@ -1,0 +1,7 @@
+<div class="nested-fields">
+	<div class="form-group">
+		<%= f.time_select :start_time, { multiple: true, :minute_step => 15 } %>～
+		<%= f.time_select :end_time, { multiple: true, :minute_step => 15 } %>
+		<%= link_to_remove_association "削除", f %>
+	</div>
+</div>

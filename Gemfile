@@ -73,3 +73,4 @@ gem "refile-mini_magick"
 gem 'cocoon'
 gem 'kaminari'
 gem 'devise'
+gem 'rails-i18n'

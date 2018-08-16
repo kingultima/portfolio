@@ -1,7 +1,7 @@
-<%= form_with(model: hospital, local: true) do |form| %>
+<%= form_for(hospital) do |f| %>
 <% if hospital.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(hospital.errors.count, "error") %> prohibited this hospital from being saved:</h2>
+  <h3 class="alert alert-danger" role="alert">入力内容にエラーが<%= pluralize(hospital.errors.count, "件") %>あります。</h3>
 
   <ul>
     <% hospital.errors.full_messages.each do |message| %>
@@ -13,16 +13,16 @@
 
 <form>
   <div class="field form-group">
-    <%= form.label "病院名" %>
-    <%= form.text_field :name, class: "form-control", placeholder: "病院名" %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "病院名" %>
   </div>
 
   <div class="field form-group">
     <label>診療対象動物</label><br>
     <% pets = ["犬","猫","うさぎ","鳥","フェレット","ハムスター","モルモット","リス","両生類","爬虫類","魚類"] %>
     <% pets.each do |pet| %>
-    <%= form.check_box :pet , {multiple: true}, pet, nil %>
-    <%= form.label :pet, pet %>
+    <%= f.check_box :pet , {multiple: true}, pet, nil %>
+    <%= f.label :pet, pet %>
     <% end %>
   </div>
 
@@ -30,43 +30,54 @@
     <label>診療日</label><br>
     <% days = ["月","火","水","木","金","土","日","祝"] %>
     <% days.each do |day| %>
-    <%= form.check_box :day , {multiple: true}, day, nil %>
-    <%= form.label :day, day %>
+    <%= f.check_box :day , {multiple: true}, day, nil %>
+    <%= f.label :day, day %>
     <% end %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :tel %>
-    <%= form.text_field :tel, class: "form-control", placeholder: "ハイフンなし数字を入力" %>
+    <%= f.label :tel %>
+    <%= f.text_field :tel, class: "form-control", placeholder: "数字を入力" %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :caption %>
-    <%= form.text_area :caption, class: "form-control" %>
+    <%= f.label :caption %>
+    <%= f.text_area :caption, class: "form-control" %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "form-control" %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
   <div class="field form-group">
-    <%= form.label "住所" %>
-    <%= form.text_field :address, class: "form-control", placeholder: "住所" %>
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, class: "form-control", placeholder: "緯度" %>
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude, class: "form-control", placeholder: "緯度" %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, class: "form-control", placeholder: "経度" %>
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude, class: "form-control", placeholder: "経度" %>
   </div>
+
+  <div class="field form-group">
+    <%= f.label "診療時間" %><br>
+    <%= f.fields_for :practice_times do |time| %>
+
+      <%= render 'practice_time_fields', f: time %>
+
+    <% end %>
+    <div id="links">
+      <%= link_to_add_association '項目の追加', f, :practice_times %>
+    </div>
 
   <div class="actions form-group">
-    <%= form.submit "create/update" , class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
   <% end %>
 
