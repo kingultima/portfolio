@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      hospital:
+        name: 病院名
+        pet: 診療対象動物
+        day: 診療対象日
+        tel: 電話番号
+        address: 住所
+        latitude: 緯度
+        longitude: 経度
+  helpers:
+    submit:
+      create: 登録する
+      update: 更新する
