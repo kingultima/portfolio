@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_131834) do
+ActiveRecord::Schema.define(version: 2018_08_16_173319) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name"
@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 2018_08_16_131834) do
     t.float "latitude"
     t.float "longitude"
     t.string "tel"
-    t.integer "time_id"
-    t.text "hospital_image"
+    t.text "hospital_image_id"
     t.string "pet"
     t.string "tag"
     t.datetime "created_at", null: false

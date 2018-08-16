@@ -1,10 +1,13 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+  <div class="col-xs-12 col-sm-offset-1 col-sm-10">
     <p id="notice"><%= notice %></p>
 
     <p>
-      <strong>Name:</strong>
       <%= @hospital.name %>
+    </p>
+
+    <p>
+      <%= attachment_image_tag @hospital, :hospital_image, :fill, 100, 100, format: 'jpeg' %>
     </p>
 
     <p>
@@ -39,12 +42,10 @@
 
     <p>
       <strong>Time:</strong>
-      <%= @hospital.time_id %>
-    </p>
-
-    <p>
-      <strong>Hospital image:</strong>
-      <%= @hospital.hospital_image %>
+      <% @practice_time.each do |time| %>
+      <%= time.start_time.to_s(:time) %> ～
+      <%= time.end_time.to_s(:time) %>
+      <% end %>
     </p>
 
     <p>
@@ -65,8 +66,8 @@
     <%= link_to 'Edit', edit_hospital_path(@hospital) %> |
     <%= link_to 'Back', hospitals_path %>
 
-    <div style='width: 600px;'>
-      <div id="map" style='width: 600px; height: 500px;'></div>
+    <div class="col-xs-12">
+      <div id="map" style='height: 500px;'></div>
     </div>
     <script>
       handler = Gmaps.build('Google');

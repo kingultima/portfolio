@@ -7,15 +7,15 @@ class Hospital < ApplicationRecord
 
 	has_many :practice_times, inverse_of: :hospital
     accepts_nested_attributes_for :practice_times, reject_if: :all_blank, allow_destroy: true
-
+    attachment :hospital_image
 	geocoded_by :address
 	after_validation :geocode, if: :address_changed?
 
 	validates :name, presence: true
 	validates :address, presence: true
 	validates :tel, presence: true
-	validates :caption, presence: true, length: { maximum: 200 }
-	validates :description, presence: true
+	# validates :caption, presence: true, length: { maximum: 200 }
+	# validates :description, presence: true
 	validates :pet, presence: true
 	validates :day, presence: true
 	# 国内プレフィックス(0)と市外局番(1～4) – 市内局番(1～4) – 加入者番号(4)

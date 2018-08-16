@@ -18,6 +18,11 @@
   </div>
 
   <div class="field form-group">
+    <%= f.label :hospital_image %>
+  <%= f.attachment_field :hospital_image %>
+  </div>
+
+  <div class="field form-group">
     <label>診療対象動物</label><br>
     <% pets = ["犬","猫","うさぎ","鳥","フェレット","ハムスター","モルモット","リス","両生類","爬虫類","魚類"] %>
     <% pets.each do |pet| %>
