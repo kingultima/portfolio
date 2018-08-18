@@ -1,47 +1,49 @@
 <div class="row">
-        <p id="notice">
-            <%= notice %>
-        </p>
-        <h1>hospitals</h1>
-        <table class="table table-striped" >
-            <thead>
-                <tr>
-                    <th class="col-sm-2">病院名</th>
-                    <th class="col-sm-3">Description</th>
-                    <th class="col-sm-2">住所</th>
-                    <th class="col-sm-2">緯度・経度</th>
-                    <th class="col-sm-1"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @hospitals.each do |hospital| %>
-                <tr>
-                    <td>
-                        <%= hospital.name %>
-                    </td>
-                    <td>
-                        <%= hospital.description %>
-                    </td>
-                    <td>
-                        <%= hospital.address %>
-                    </td>
-                    <td>
-                        緯度：<%= hospital.latitude %><br>
-                        経度：<%= hospital.longitude %>
-                    </td>
-                    <td>
-                        <%= link_to 'Show', hospital, class: "btn btn-primary btn-block" %>
-                        <%= link_to 'Edit', edit_hospital_path(hospital), class: "btn btn-success btn-block" %>
-                        <%= link_to 'Destroy', hospital, method: :delete, data: { confirm: '削除しますか?' }, class: "btn btn-danger btn-block" %>
-                    </td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
-        <br>
-        <%= link_to 'New hospital', new_hospital_path %>
-        <span>|</span>
-        <%= link_to 'MAP', maps_path %>
+    <p id="notice">
+        <%= notice %>
+    </p>
+    <h1>病院一覧</h1>
+    <table class="table table-striped background-content" >
+        <thead>
+            <tr>
+                <th class="col-sm-2">病院名</th>
+                <th class="col-sm-3">診療時間</th>
+                <th class="col-sm-2">住所</th>
+                <th class="col-sm-2">緯度・経度</th>
+                <th class="col-sm-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @hospitals.each do |hospital| %>
+            <tr>
+                <td>
+                    <%= hospital.name %>
+                </td>
+                <td>
+                    <% hospital.practice_times.each do |time| %>
+                    <%= time.start_time.to_s(:time) %> ～
+                    <%= time.end_time.to_s(:time) %><br>
+                    <% end %>
+                </td>
+                <td>
+                    <%= hospital.address %>
+                </td>
+                <td>
+                    緯度：<%= hospital.latitude %><br>
+                    経度：<%= hospital.longitude %>
+                </td>
+                <td>
+                    <%= link_to 'Show', hospital, class: "btn btn-primary btn-block" %>
+                    <%= link_to 'Edit', edit_hospital_path(hospital), class: "btn btn-success btn-block" %>
+                    <%= link_to 'Destroy', hospital, method: :delete, data: { confirm: '削除しますか?' }, class: "btn btn-danger btn-block" %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <%= link_to 'New hospital', new_hospital_path %>
+    <span>|</span>
+    <%= link_to 'MAP', maps_path %>
 
-    </div>
 </div>

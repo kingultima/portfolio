@@ -1,7 +1,7 @@
 <%= form_for(hospital) do |f| %>
 <% if hospital.errors.any? %>
 <div id="error_explanation">
-  <h3 class="alert alert-danger" role="alert">入力内容にエラーが<%= pluralize(hospital.errors.count, "件") %>あります。</h3>
+  <h2 class="alert alert-danger" role="alert">エラーが<%= pluralize(hospital.errors.count, "件") %>あります。</h2>
 
   <ul>
     <% hospital.errors.full_messages.each do |message| %>
@@ -17,7 +17,7 @@
     <%= f.text_field :name, class: "form-control", placeholder: "病院名" %>
   </div>
 
-  <div class="field form-group">
+  <div class="msr_file">
     <%= f.label :hospital_image %>
   <%= f.attachment_field :hospital_image %>
   </div>
@@ -81,8 +81,8 @@
       <%= link_to_add_association '項目の追加', f, :practice_times %>
     </div>
 
-  <div class="actions form-group">
-    <%= f.submit class: "btn btn-primary" %>
+  <div class=" msr_sendbtn">
+    <%= f.submit %>
   </div>
   <% end %>
 

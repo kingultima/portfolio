@@ -16,8 +16,8 @@ class Hospital < ApplicationRecord
 	validates :tel, presence: true
 	# validates :caption, presence: true, length: { maximum: 200 }
 	# validates :description, presence: true
-	validates :pet, presence: true
-	validates :day, presence: true
+	# validates :pet, presence: true
+	# validates :day, presence: true
 	# 国内プレフィックス(0)と市外局番(1～4) – 市内局番(1～4) – 加入者番号(4)
 	# ハイフンはありでもなしでも可。全体の桁数チェックは無し
 	VALID_PHONE_REGEX = /\A(0{1}\d{1,4}-{0,1}\d{1,4}-{0,1}\d{4})\z/
