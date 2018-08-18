@@ -8,8 +8,8 @@
 		handler.bounds.extendWith(markers);
 		handler.fitMapToBounds();
 		// 初期位置
-		// handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
+		handler.getMap().setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
 		// 初期縮尺
-		// handler.getMap().setZoom(10);
+		handler.getMap().setZoom(10);
 	});
 </script>

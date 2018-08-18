@@ -11,24 +11,33 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "bootstrap-sprockets";
-@import "bootswatch/united/variables";
-@import "bootstrap";
-@import "bootswatch/united/bootswatch";
-@import "font-awesome";
+ @import "bootstrap-sprockets";
+ @import "bootswatch/united/variables";
+ @import "bootstrap";
+ @import "bootswatch/united/bootswatch";
+ @import "font-awesome";
 /*コンテンツが Navbar の下に隠れないようにする*/
-body { padding-top: 60px; }
+// body { padding-top: 60px; }
+
+.background {
+  background-image: url(/images/memphis-colorful.png);
+}
+
+.row .background-content {
+  background-image: url(/images/crossword.png);
+  // background: rgba(255,255,255,0.8);
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
 
 #error_explanation {
@@ -57,4 +66,117 @@ body { padding-top: 60px; }
 .table > tfoot > tr > td {
 	vertical-align: middle;
 	text-align: center;
+}
+
+h1, h3, h4 {
+  position: relative;
+  padding: 10px;
+  background: -moz-linear-gradient(to right, rgb(255, 186, 115), transparent);
+  background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
+  background: linear-gradient(to right, rgb(255, 186, 115), transparent);
+  color: #545454;
+}
+
+h2 {
+  position: relative;
+  padding: 10px 0;
+  line-height: 1.4;
+  color: #ff6a6a;
+  border-top: dotted 1px gray;
+  border-bottom: dotted 1px gray;
+  background: #fffff4;
+}
+
+/*ファイル選択*/
+
+.msr_file {
+  padding-bottom: 20px;
+  width: 460px;
+}
+
+.msr_file label {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  cursor: pointer;
+  display:block;
+  font-size:14px;
+  padding: 10px;
+  position:relative;
+  height: 40px;
+  width: 230px;
+}
+.msr_file label::before {
+  content:"＋";
+  color:#DD4814;
+  font-size:20px;
+  line-height:1;
+  margin-top: -9px;
+  right:10px;
+  position:absolute;
+  top:50%;
+}
+.msr_file input[type=file] {
+  display: none;
+}
+
+/*送信ボタン*/
+.msr_sendbtn{
+  margin:20px 0;
+}
+
+.msr_sendbtn input[type=submit] {
+  background-color: #FFFFFF;
+  border:1px solid #ccc;
+  border-radius: 2px;
+  color: #333333;
+  cursor:pointer;
+  display: block;
+  font-size: 14px;
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  width: 100%;
+}
+.msr_sendbtn input[type=submit]:hover {
+  background-color: #999999;
+  color: #FFFFFF;
+}
+
+// ナビメニュー
+
+i{
+  font-size: 1.3em;
+  color: inherit;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar .navbar-inner {
+  padding: 0;
+}
+
+.navbar .nav {
+  margin: 0;
+  display: table;
+  width: 100%;
+}
+
+.navbar .nav li {
+  display: table-cell;
+  float: none;
+}
+
+.navbar .nav li a {
+  font-weight: bold;
+  text-align: center;
+// border-left: 1px solid rgba(255, 255, 255, .75);
+// border-right: 1px solid rgba(0, 0, 0, .1);
 }

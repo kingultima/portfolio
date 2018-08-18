@@ -10,6 +10,7 @@ class HospitalsController < ApplicationController
   # GET /hospitals/1
   # GET /hospitals/1.json
   def show
+    @practice_time = @hospital.practice_times
     @hash = Gmaps4rails.build_markers(@hospital) do |hospital, marker|
       marker.lat hospital.latitude
       marker.lng hospital.longitude
