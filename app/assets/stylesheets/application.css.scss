@@ -10,6 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_tree .
+ *= require_self
  */
  @import "bootstrap-sprockets";
  @import "bootswatch/cosmo/variables";
@@ -182,6 +184,16 @@ h3:after {
   transition:all 0.5s;
   z-index:1;
 }
+// 後で消す
+.menu-con p {
+  margin: 0;
+  height:20px;
+  -webkit-align-self:center;
+  color:white;
+  font-size:25px;
+  z-index:2;
+  cursor:pointer;
+}
 .menu-con p:before {
   content: "";
   display: block;
@@ -199,21 +211,39 @@ h3:after {
 .menu-con:hover p:before {
   background: rgba(0,0,0,0.2);
 }
-.menu-con p {
-  height:20px;
+// 
+.menu-con a {
+  // height:20px;
+  text-decoration: none;
   -webkit-align-self:center;
   color:white;
   font-size:25px;
   z-index:2;
   cursor:pointer;
 }
+// 
+.menu-con a:before {
+  content: "";
+  display: block;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+  width:100%;
+  height: 100%;
+  opacity: 1;
+  background: rgba(0,0,0,0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.menu-con:hover a:before {
+  background: rgba(0,0,0,0.2);
+}
 @media screen and (min-width: 768px) {
   // .menu-icon {display: none;}
-  // .menu-con {top: 0}
 }
 
 @media screen and (max-width: 767px) {
-  // .menu {position: fixed;}
   .menu-con {min-width:100%;}
 }
 

@@ -1,3 +1,24 @@
-// Place all the styles related to the hospitals controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// index
+
+// show
+.hos-mt-30 {
+	margin-top: 30px;
+}
+.hos-mt-15 {
+	margin-top: 15px;
+}
+.hos-button {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+#map {
+	margin: 30px 0;
+	height: 500px;
+}
+@media screen and (max-width: 767px) {
+  #map {
+  	height: 350px;
+  	width: 95%;
+  	margin: 50 auto;
+  }
+}
