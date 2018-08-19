@@ -1,7 +1,7 @@
 <%= form_for(hospital) do |f| %>
 <% if hospital.errors.any? %>
 <div id="error_explanation">
-  <h2 class="alert alert-danger" role="alert">エラーが<%= pluralize(hospital.errors.count, "件") %>あります。</h2>
+  <h5 class="alert alert-danger" role="alert">エラーが<%= pluralize(hospital.errors.count, "件") %>あります。</h5>
 
   <ul>
     <% hospital.errors.full_messages.each do |message| %>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="msr_file">
-    <%= f.label :hospital_image %>
+    <%= f.label "イメージ画像を選択" %>
   <%= f.attachment_field :hospital_image %>
   </div>
 
