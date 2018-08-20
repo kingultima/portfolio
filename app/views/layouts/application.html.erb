@@ -26,7 +26,7 @@
   <% if user_signed_in? %>
   <div class="menu">
     <div class="menu-con" style="background:#FF0039;"><p>HOME</p></div>
-    <div class="menu-con" style="background:#8542a7;"><p>HOSPITAL</p></div>
+    <div class="menu-con" style="background:#8542a7;"><%= link_to "HOSPITAL", hospitals_path %></div>
     <div class="menu-con" style="background:#339414;"><p>SEARCH</p></div>
     <div class="menu-con" style="background:#2780E3;"><a href="#">ABOUT</a></div>
     <div class="menu-con" style="background:#252728;">
@@ -36,7 +36,7 @@
   <% else %>
   <div class="menu">
     <div class="menu-con" style="background:#FF0039;"><p>HOME</p></div>
-    <div class="menu-con" style="background:#8542a7;"><p>HOSPITAL</p></div>
+    <div class="menu-con" style="background:#8542a7;"><%= link_to "HOSPITAL", hospitals_path %></div>
     <div class="menu-con" style="background:#339414;"><p>SEARCH</p></div>
     <div class="menu-con" style="background:#2780E3;"><a href="#">ABOUT</a></div>
     <div class="menu-con" style="background:#252728;">

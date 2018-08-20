@@ -55,8 +55,12 @@
 }
 
 .field_with_errors {
-  color: red;
+  // color: red;
   @extend .has-error;
+}
+
+ul, li {
+  list-style: none;
 }
 
 .navbar-default .navbar-toggle {

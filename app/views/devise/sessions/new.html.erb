@@ -4,20 +4,10 @@
     <h2>ログイン</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h5 class="alert alert-danger" role="alert">エラーが<%= pluralize(@user.errors.count, "件") %>あります。</h5>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
 
- <%- flash.each do |name, msg| -%>
+    <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  <%- end -%>
+    <%- end -%>
 
     <form>
       <div class="field form-group">
