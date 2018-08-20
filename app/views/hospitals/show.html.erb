@@ -1,50 +1,50 @@
 <div class="row">
   <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 background-content">
-    <p id="notice"><%= notice %></p>
 
-    <h2><%= @hospital.name %></h2>
 
-    <div class="col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-6">
-      <%= attachment_image_tag @hospital, :hospital_image, :fill, 250, 250, format: 'jpeg', fallback: "/images/noimage2.png", :size => "250x250" %>
+    <h2 class="text-center hos-mt-30"><%= @hospital.name %></h2>
+
+    <div class="row hos-mt-30">
+      <div class="col-xs-12 col-sm-6  hos-mt-30">
+        <%= attachment_image_tag @hospital, :hospital_image, :fill, 250, 250, format: 'jpeg', fallback: "/images/noimage.jpg", :size => "250x250", class: "center-block" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 text-center">
+        <div class="hos-mt-15">
+          <span class="badge badge-orange">住所</span><br>
+          <%= @hospital.address %>
+        </div>
+
+        <div class="hos-mt-15">
+          <span class="badge badge-pill badge-orange">TEL</span><br>
+          <%= @hospital.tel %>
+        </div>
+
+        <div class="hos-mt-15">
+          <span class="badge badge-pill badge-orange">診療日</span><br>
+          <%= @hospital.day %>
+        </div>
+
+        <div class="hos-mt-15">
+          <span class="badge badge-pill badge-orange">診療時間</span><br>
+          <% @practice_time.each do |time| %>
+          <%= time.start_time.to_s(:time) %> ～
+          <%= time.end_time.to_s(:time) %><br>
+          <% end %>
+        </div>
+
+        <div class="hos-mt-15">
+          <span class="badge badge-pill badge-orange">ペット種別</span><br>
+          <%= @hospital.pet %>
+        </div>
+      </div>
     </div>
 
-    <div class="col-xs-10 col-sm-6">
-    <p>
-      <span class="badge badge-pill badge-primary">住所</span><br>
-      <%= @hospital.address %>
-    </p>
-
-    <p>
-      <span class="badge badge-pill badge-primary">TEL</span><br>
-      <%= @hospital.tel %>
-    </p>
-
-        <p>
-      <span class="badge badge-pill badge-primary">診療日</span><br>
-      <%= @hospital.day %>
-    </p>
-
-    <p>
-      <span class="badge badge-pill badge-primary">診療時間</span><br>
-      <% @practice_time.each do |time| %>
-      <%= time.start_time.to_s(:time) %> ～
-      <%= time.end_time.to_s(:time) %><br>
-      <% end %>
-    </p>
-
-    <p>
-      <span class="badge badge-pill badge-primary">ペット種別</span><br>
-      <%= @hospital.pet %>
-    </p>
-
-  </div>
-
-    <%= link_to 'Edit', edit_hospital_path(@hospital) %> |
-    <%= link_to 'Back', hospitals_path %>
-
+    <h2 class="text-center">アクセス</h2>
     <div class="col-xs-12">
-      <div id="map" style='height: 500px;'></div>
+      <div id="map"></div>
     </div>
+
     <script>
       handler = Gmaps.build('Google');
       handler.buildMap({ provider: {}, internal: { id: 'map' } }, function() {
@@ -54,6 +54,15 @@
         handler.getMap().setZoom(15);
       });
     </script>
+
+    <div class="col-xs-12 hos-button">
+      <% if user_signed_in? %>
+      <%= link_to '編集', edit_hospital_path(@hospital), class: "btn btn-success btn-color" %> |
+      <%= link_to '一覧へ', hospitals_path, class: "btn btn-warning" %>
+      <% else %>
+      <%= link_to '一覧へ', hospitals_path, class: "btn btn-warning" %>
+      <% end %>
+    </div>
 
   </div>
 </div>

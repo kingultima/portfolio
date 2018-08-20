@@ -3,7 +3,18 @@
         <%= notice %>
     </p>
     <h1>病院一覧</h1>
-    <table class="table table-striped background-content" >
+
+    <div class="col-xs-12 hos-button">
+      <% if user_signed_in? %>
+      <%= link_to '病院を追加する', new_hospital_path %>
+      <span>|</span>
+      <%= link_to 'マップ一覧', maps_path %>
+      <% else %>
+      <%= link_to 'マップ一覧', maps_path %>
+      <% end %>
+  </div>
+
+      <table class="table table-striped background-content" >
         <thead>
             <tr>
                 <th class="col-sm-2">病院名</th>
@@ -41,9 +52,4 @@
             <% end %>
         </tbody>
     </table>
-    <br>
-    <%= link_to 'New hospital', new_hospital_path %>
-    <span>|</span>
-    <%= link_to 'MAP', maps_path %>
-
 </div>
