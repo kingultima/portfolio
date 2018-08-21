@@ -6,7 +6,8 @@ class Hospital < ApplicationRecord
 	end
 
 	has_many :practice_times, inverse_of: :hospital
-	has_many :pets
+	has_many :pethospitals
+	has_many :pets, :through => :pethospitals
     accepts_nested_attributes_for :practice_times, reject_if: :all_blank, allow_destroy: true
     attachment :hospital_image
 	geocoded_by :address

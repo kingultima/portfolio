@@ -8,5 +8,8 @@ class ApplicationController < ActionController::Base
 
 	private
 
+	def search_params
+		params.require(:q).permit(:pet_id_in)
+	end
 
 end

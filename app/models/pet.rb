@@ -1,3 +1,4 @@
 class Pet < ApplicationRecord
-	belongs_to :hospital
+	has_many :pethospitals
+	has_many :hospitals, :through => :pethospitals
 end

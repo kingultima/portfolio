@@ -1,16 +1,12 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
 
-  # GET /hospitals
-  # GET /hospitals.json
   def index
     # @hospital = Hospital.find.params([:id])
     @hospitals = Hospital.all.page(params[:page])
     # @pets = @hospital.pets
   end
 
-  # GET /hospitals/1
-  # GET /hospitals/1.json
   def show
     @practice_time = @hospital.practice_times
     @hash = Gmaps4rails.build_markers(@hospital) do |hospital, marker|
@@ -20,19 +16,15 @@ class HospitalsController < ApplicationController
     end
   end
 
-  # GET /hospitals/new
   def new
     @hospital = Hospital.new
     @pets = Pet.all
     @practice_time = @hospital.practice_times.build
   end
 
-  # GET /hospitals/1/edit
   def edit
   end
 
-  # POST /hospitals
-  # POST /hospitals.json
   def create
     @hospital = Hospital.new(hospital_params)
 
@@ -47,8 +39,6 @@ class HospitalsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /hospitals/1
-  # PATCH/PUT /hospitals/1.json
   def update
     respond_to do |format|
       if @hospital.update(hospital_params)
@@ -61,8 +51,6 @@ class HospitalsController < ApplicationController
     end
   end
 
-  # DELETE /hospitals/1
-  # DELETE /hospitals/1.json
   def destroy
     @hospital.destroy
     respond_to do |format|
@@ -76,9 +64,8 @@ class HospitalsController < ApplicationController
     def set_hospital
       @hospital = Hospital.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def hospital_params
-      params.require(:hospital).permit( :name, :caption, :description, :address, :latitude, :longitude, :tel, :hospital_image, :tag, :pet_id, pet_ids: [] , pet: [], day: [], practice_times_attributes: [:id, :start_time, :end_time, :_destroy])
+      params.require(:hospital).permit( :name, :caption, :description, :address, :latitude, :longitude, :tel, :hospital_image, :tag, :pet_id, pet_ids: [], day: [], practice_times_attributes: [:id, :start_time, :end_time, :_destroy])
     end
   end

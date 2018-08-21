@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_210722) do
+ActiveRecord::Schema.define(version: 2018_08_21_094058) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name"
@@ -21,12 +21,17 @@ ActiveRecord::Schema.define(version: 2018_08_20_210722) do
     t.float "longitude"
     t.string "tel"
     t.text "hospital_image_id"
-    t.string "pet"
     t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "day"
+  end
+
+  create_table "pethospitals", force: :cascade do |t|
+    t.integer "hospital_id"
     t.integer "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pets", force: :cascade do |t|
