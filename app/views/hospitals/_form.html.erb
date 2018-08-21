@@ -25,7 +25,7 @@
 
       <div class="form-group">
         <label>診療対象動物</label><br>
-        <%= f.collection_check_boxes :pet_ids, Pet.all, :id, :name, include_hidden: false do |b| %>
+        <%= f.collection_check_boxes :pet_id, Pet.all, :id, :name, include_hidden: false do |b| %>
         <%= b.label { b.check_box + b.text } %>
         <% end %>
     </div>
@@ -34,7 +34,7 @@
     <label>診療日</label><br>
     <% days = ["月","火","水","木","金","土","日","祝"] %>
     <% days.each do |day| %>
-    <%= f.check_box :day , {multiple: true}, day, nil %>
+    <%= f.check_box :day , {multiple: true  }, day, nil %>
     <%= f.label :day, day %>
     <% end %>
   </div>
