@@ -18,18 +18,19 @@
                 <%= f.text_field :address_cont, class: "form-control" %>
             </div>
 
-            <div class="form-group">
+            <div class="field form-group">
                 <label>診療対象動物</label><br>
-                    <%= f.collection_radio_buttons :pets_id_in, Pet.all, :id, :name, class: "pretty p-default" %>
+                <label><%= f.radio_button 'pets_id_eq', '', {:checked => true} %> 指定なし</label>
+                <%= f.collection_radio_buttons :pets_id_eq, Pet.all, :id, :name, include_hidden: false %>
             </div>
 
             <div class="field form-group">
                 <label>診療日</label><br>
-                <%= f.collection_check_boxes :days_id_in, Day.all, :id, :name %>
+                <%= f.collection_check_boxes :days_id_in, Day.all, :id, :name, include_hidden: false %>
             </div>
 
 
-            <div><%= f.submit "Search" %></div>
+            <div class="form-text"><%= f.submit "Search", class: "btn btn-primary btn-block" %></div>
             <% end %>
         </div>
 
