@@ -22,7 +22,9 @@
 
         <div class="hos-mt-15">
           <span class="badge badge-pill badge-orange">診療日</span><br>
-          <%= @hospital.day %>
+          <% @hospital.days.each do |day| %>
+          <%= day.name %>
+          <% end %>
         </div>
 
         <div class="hos-mt-15">
@@ -35,7 +37,9 @@
 
         <div class="hos-mt-15">
           <span class="badge badge-pill badge-orange">ペット種別</span><br>
-          <%= "" %>
+          <% @hospital.pets.each do |pet| %>
+          <%= pet.name %>
+          <% end %>
         </div>
       </div>
     </div>

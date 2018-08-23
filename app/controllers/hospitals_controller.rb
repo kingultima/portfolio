@@ -2,9 +2,7 @@ class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @hospital = Hospital.find.params([:id])
     @hospitals = Hospital.all.page(params[:page])
-    # @pets = @hospital.pets
   end
 
   def show
@@ -18,7 +16,6 @@ class HospitalsController < ApplicationController
 
   def new
     @hospital = Hospital.new
-    @pets = Pet.all
     @practice_time = @hospital.practice_times.build
   end
 
@@ -66,6 +63,6 @@ class HospitalsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def hospital_params
-      params.require(:hospital).permit( :name, :caption, :description, :address, :latitude, :longitude, :tel, :hospital_image, :tag, :pet_id, pet_ids: [], day: [], practice_times_attributes: [:id, :start_time, :end_time, :_destroy])
+      params.require(:hospital).permit( :name, :address, :latitude, :longitude, :tel, :hospital_image, pet_ids: [], day_ids: [], practice_times_attributes: [:id, :start_time, :end_time, :_destroy])
     end
   end

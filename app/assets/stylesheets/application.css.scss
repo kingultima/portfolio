@@ -9,7 +9,8 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -17,7 +18,6 @@
  @import "bootswatch/cosmo/variables";
  @import "bootstrap";
  @import "bootswatch/cosmo/bootswatch";
- @import "font-awesome";
  @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
  @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
@@ -55,7 +55,7 @@
 }
 
 .field_with_errors {
-  // color: red;
+  // display: inline-block;
   @extend .has-error;
 }
 
