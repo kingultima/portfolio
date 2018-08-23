@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require data-confirm-modal
 //= require bootstrap-sprockets
 //= require_tree .
 //= require underscore

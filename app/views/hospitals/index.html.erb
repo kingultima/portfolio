@@ -1,55 +1,111 @@
-<div class="row">
-    <p id="notice">
-        <%= notice %>
-    </p>
-    <h1>病院一覧</h1>
+<div class="hospital-index">
+    <div class="row">
+        <p id="notice">
+            <%= notice %>
+        </p>
+        <h1>病院一覧</h1>
 
-    <div class="col-xs-12 hos-button">
-      <% if user_signed_in? %>
-      <%= link_to '病院を追加する', new_hospital_path %>
-      <span>|</span>
-      <%= link_to 'マップ一覧', maps_path %>
-      <% else %>
-      <%= link_to 'マップ一覧', maps_path %>
-      <% end %>
-  </div>
+        <%= search_form_for @search  do |f| %>
+        <div class="search-box background-content">
+            <h2 class="hos-mb-50">病院検索</h2>
+            <div class="form-group form-text">
+                <%= f.label :name_cont %>
+                <%= f.text_field :name_cont, class: "form-control" %>
+            </div>
 
-      <table class="table table-striped background-content" >
-        <thead>
-            <tr>
-                <th class="col-sm-2">病院名</th>
-                <th class="col-sm-3">診療時間</th>
-                <th class="col-sm-2">住所</th>
-                <th class="col-sm-2">緯度・経度</th>
-                <th class="col-sm-1"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @hospitals.each do |hospital| %>
-            <tr>
-                <td>
-                    <%= hospital.name %>
-                </td>
-                <td>
-                    <% hospital.practice_times.each do |time| %>
-                    <%= time.start_time.to_s(:time) %> ～
-                    <%= time.end_time.to_s(:time) %><br>
-                    <% end %>
-                </td>
-                <td>
-                    <%= hospital.address %>
-                </td>
-                <td>
-                    緯度：<%= hospital.latitude %><br>
-                    経度：<%= hospital.longitude %>
-                </td>
-                <td>
-                    <%= link_to 'Show', hospital, class: "btn btn-primary btn-block" %>
-                    <%= link_to 'Edit', edit_hospital_path(hospital), class: "btn btn-success btn-block" %>
-                    <%= link_to 'Destroy', hospital, method: :delete, data: { confirm: '削除しますか?' }, class: "btn btn-danger btn-block" %>
-                </td>
-            </tr>
+            <div class="form-group form-text">
+                <%= f.label :address_cont %>
+                <%= f.text_field :address_cont, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <label>診療対象動物</label><br>
+                    <%= f.collection_radio_buttons :pets_id_in, Pet.all, :id, :name, class: "pretty p-default" %>
+            </div>
+
+            <div class="field form-group">
+                <label>診療日</label><br>
+                <%= f.collection_check_boxes :days_id_in, Day.all, :id, :name %>
+            </div>
+
+
+            <div><%= f.submit "Search" %></div>
             <% end %>
-        </tbody>
-    </table>
+        </div>
+
+        <% if @result.any? %>
+        <table class="table table-striped background-content" >
+            <thead>
+                <tr>
+                    <th class="col-sm-2">病院名</th>
+                    <th class="col-sm-2">診療日</th>
+                    <th class="col-sm-2">診療時間</th>
+                    <th class="col-sm-2">住所</th>
+                    <th class="col-sm-2">診療動物</th>
+                    <th class="col-sm-1"></th>
+                    <th class="col-sm-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @result.each do |result| %>
+                <tr>
+                    <td>
+                        <%= result.name %>
+                    </td>
+                    <td>
+                        <% result.days.each do |day| %>
+                        <div class="badge badge-light">
+                            <%= day.name %>
+                        </div>
+                        <% end %>
+                    </td>
+                    <td>
+                        <% result.practice_times.each do |time| %>
+                        <%= time.start_time.to_s(:time) %> ～
+                        <%= time.end_time.to_s(:time) %><br>
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= result.address %>
+                    </td>
+                    <td>
+                        <% result.pets.each do |pet| %>
+                        <%= pet.name %>
+                        <% end %>
+                    </td>
+                    <td>
+                        緯度：<%= result.latitude %><br>
+                        経度：<%= result.longitude %>
+                    </td>
+                    <td>
+                        <div class="table-btn">
+                            <%= link_to '詳細', result, class: "cp_primary" %>
+                            <% if user_signed_in? %>
+                            <%= link_to '編集', result, class: "cp_success" %>
+                            <%= link_to '削除', result, method: :delete, data: { confirm: '削除しますか?' }, class: "cp_destroy" %>
+                        </div>
+                        <% end %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <% end %>
+
+        <% if @result.nil? %>
+
+        <%= render @hospitals %>
+
+        <% end %>
+
+        <div class="col-xs-12 hos-button">
+          <% if user_signed_in? %>
+          <%= link_to '病院を追加する', new_hospital_path %>
+          <span>|</span>
+          <%= link_to 'マップ一覧', maps_path %>
+          <% else %>
+          <%= link_to 'マップ一覧', maps_path %>
+          <% end %>
+      </div>
+  </div>
 </div>

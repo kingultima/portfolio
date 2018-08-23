@@ -14,76 +14,59 @@
 <form>
   <div class="field form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control", placeholder: "病院名" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "病院名を入力" %>
   </div>
 
-  <div class="msr_file">
+  <div class="field form-group">
     <%= f.label "イメージ画像を選択" %>
-  <%= f.attachment_field :hospital_image %>
+    <%= f.attachment_field :hospital_image %>
   </div>
 
-  <div class="field form-group">
+
+  <div class="form-group">
     <label>診療対象動物</label><br>
-    <% pets = ["犬","猫","うさぎ","鳥","フェレット","ハムスター","モルモット","リス","両生類","爬虫類","魚類"] %>
-    <% pets.each do |pet| %>
-    <%= f.check_box :pet , {multiple: true}, pet, nil %>
-    <%= f.label :pet, pet %>
-    <% end %>
+    <%= f.collection_check_boxes :pet_ids, Pet.all, :id, :name, include_hidden: false %>
   </div>
 
-  <div class="field form-group">
+  <div class="form-group">
     <label>診療日</label><br>
-    <% days = ["月","火","水","木","金","土","日","祝"] %>
-    <% days.each do |day| %>
-    <%= f.check_box :day , {multiple: true}, day, nil %>
-    <%= f.label :day, day %>
-    <% end %>
+    <%= f.collection_check_boxes :day_ids, Day.all, :id, :name, include_hidden: false %>
   </div>
 
   <div class="field form-group">
     <%= f.label :tel %>
-    <%= f.text_field :tel, class: "form-control", placeholder: "数字を入力" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :caption %>
-    <%= f.text_area :caption, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.text_field :tel, class: "form-control", placeholder: "ハイフンあり/なし数字を入力" %>
   </div>
 
   <div class="field form-group">
     <%= f.label :address %>
-    <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
+    <%= f.text_field :address, class: "form-control", placeholder: "住所を入力" %>
   </div>
 
   <div class="field form-group">
     <%= f.label :latitude %>
-    <%= f.text_field :latitude, class: "form-control", placeholder: "緯度" %>
+    <%= f.text_field :latitude, class: "form-control", placeholder: "緯度を入力" %>
   </div>
 
   <div class="field form-group">
     <%= f.label :longitude %>
-    <%= f.text_field :longitude, class: "form-control", placeholder: "経度" %>
+    <%= f.text_field :longitude, class: "form-control", placeholder: "経度を入力" %>
   </div>
 
   <div class="field form-group">
     <%= f.label "診療時間" %><br>
     <%= f.fields_for :practice_times do |time| %>
 
-      <%= render 'practice_time_fields', f: time %>
+    <%= render 'practice_time_fields', f: time %>
 
     <% end %>
     <div id="links">
       <%= link_to_add_association '項目の追加', f, :practice_times %>
     </div>
 
-  <div class=" msr_sendbtn">
-    <%= f.submit %>
-  </div>
-  <% end %>
+    <div class=" msr_sendbtn">
+      <%= f.submit %>
+    </div>
+    <% end %>
 
-</form>
+  </form>
