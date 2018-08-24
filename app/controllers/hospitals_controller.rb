@@ -1,8 +1,14 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
 
+  def search
+  end
+
+  def map
+  end
+
   def index
-    @hospitals = Hospital.all.page(params[:page]).per(10)
+    @hospitals = Hospital.page(params[:page]).per(10)
   end
 
   def show

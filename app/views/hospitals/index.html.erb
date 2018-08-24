@@ -26,7 +26,7 @@
 
             <div class="field form-group">
                 <label>診療日</label><br>
-                <%= f.collection_check_boxes :days_id_in, Day.all, :id, :name, include_hidden: false %>
+                <%= f.collection_check_boxes :days_id_eq, Day.all, :id, :name, include_hidden: false %>
             </div>
 
 
@@ -43,7 +43,9 @@
                     <th class="col-sm-2">診療時間</th>
                     <th class="col-sm-2">住所</th>
                     <th class="col-sm-2">診療動物</th>
+                    <% if current_user.try(:admin?) %>
                     <th class="col-sm-1"></th>
+                    <% end %>
                     <th class="col-sm-1"></th>
                 </tr>
             </thead>
@@ -55,7 +57,7 @@
                     </td>
                     <td>
                         <% result.days.each do |day| %>
-                        <div class="badge badge-light">
+                        <div class="badge badge-orange">
                             <%= day.name %>
                         </div>
                         <% end %>
@@ -71,36 +73,45 @@
                     </td>
                     <td>
                         <% result.pets.each do |pet| %>
-                        <%= pet.name %>
+                        <div class="badge badge-pink">
+                            <%= pet.name %>
+                        </div>
                         <% end %>
                     </td>
+                    <% if current_user.try(:admin?) %>
                     <td>
                         緯度：<%= result.latitude %><br>
                         経度：<%= result.longitude %>
                     </td>
+                    <% end %>
                     <td>
                         <div class="table-btn">
                             <%= link_to '詳細', result, class: "cp_primary" %>
-                            <% if user_signed_in? %>
+                            <% if current_user.try(:admin?) %>
                             <%= link_to '編集', result, class: "cp_success" %>
                             <%= link_to '削除', result, method: :delete, data: { confirm: '削除しますか?' }, class: "cp_destroy" %>
+                            <% end %>
                         </div>
-                        <% end %>
                     </td>
                 </tr>
                 <% end %>
             </tbody>
+
+
+
         </table>
         <% end %>
 
         <% if @result.nil? %>
 
         <%= render @hospitals %>
-
+        <div class="pagination">
+            <%= paginate @hospitals , class: "pagenate" %>
+        </div>
         <% end %>
 
         <div class="col-xs-12 hos-button">
-          <% if user_signed_in? %>
+          <% if current_user.try(:admin?) %>
           <%= link_to '病院を追加する', new_hospital_path %>
           <span>|</span>
           <%= link_to 'マップ一覧', maps_path %>
