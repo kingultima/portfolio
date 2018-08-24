@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 	devise_for :users
 	resources :hospitals
-	get 'map/index', as: 'maps'
+	get 'search', to: 'hospitals#search', as: 'search'
+	get 'map', to: 'hospitals#map', as: 'maps'
 	# get '/user/about' => 'users#about', as: 'about'
 	# get 'users/top', as: 'top'
 	root to: 'hospitals#index', as: 'root'

@@ -215,7 +215,7 @@ h3:after {
 .menu-con:hover p:before {
   background: rgba(0,0,0,0.2);
 }
-// 
+//
 .menu-con a {
   // height:20px;
   text-decoration: none;
@@ -225,7 +225,7 @@ h3:after {
   z-index:2;
   cursor:pointer;
 }
-// 
+//
 .menu-con a:before {
   content: "";
   display: block;
@@ -254,8 +254,11 @@ h3:after {
 // バッジカラー
 .badge-orange{
   background-color: orange;
+  border-radius: 50%;
 }
-
+.badge-pink{
+  background-color: #cc3366;
+}
 /*ファイル選択*/
 
 .msr_file {
