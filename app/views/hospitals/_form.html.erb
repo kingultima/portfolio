@@ -64,9 +64,7 @@
       <%= link_to_add_association '項目の追加', f, :practice_times %>
     </div>
 
-    <div class=" msr_sendbtn">
-      <%= f.submit %>
-    </div>
+    <%= f.button fa_icon("search", text: "検索する"), class: "submit-button center-block" %>
     <% end %>
 
   </form>

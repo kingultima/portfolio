@@ -7,9 +7,9 @@
   <title>Portfolio</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/balzss/luxbar/ae5835e2/build/luxbar.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script src="//maps.google.com/maps/api/js?key=AIzaSyCvtHHxeUnGwM1eHb9OH3Vn5tGsuzmN5Ls"></script>
   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
@@ -19,37 +19,50 @@
 <body class="background">
 
   <!-- ハンバーガーアイコン -->
-  <div class="menu-icon" onclick="this.classList.toggle('hover');Drop(0)">
+<!--   <div class="menu-icon" onclick="this.classList.toggle('hover');Drop(0)">
     <div class="menu-bar menu-bar1"></div>
     <div class="menu-bar menu-bar2"></div>
     <div class="menu-bar menu-bar3"></div>
   </div>
 
-  <% if user_signed_in? %>
   <div class="menu">
     <div class="menu-con" style="background:#FF0039;"><p>HOME</p></div>
     <div class="menu-con" style="background:#8542a7;"><%= link_to "HOSPITAL", hospitals_path %></div>
-    <div class="menu-con" style="background:#339414;"><p>SEARCH</p></div>
+    <div class="menu-con" style="background:#339414;"><%= link_to "SEARCH", search_path %></div>
     <div class="menu-con" style="background:#2780E3;"><a href="#">ABOUT</a></div>
     <div class="menu-con" style="background:#252728;">
+      <% if user_signed_in? %>
       <%= link_to "SIGN-OUT", destroy_user_session_path, method: :delete %>
-    </div>
-  </div>
-  <% else %>
-  <div class="menu">
-    <div class="menu-con" style="background:#FF0039;"><p>HOME</p></div>
-    <div class="menu-con" style="background:#8542a7;"><%= link_to "HOSPITAL", hospitals_path %></div>
-    <div class="menu-con" style="background:#339414;"><p>SEARCH</p></div>
-    <div class="menu-con" style="background:#2780E3;"><a href="#">ABOUT</a></div>
-    <div class="menu-con" style="background:#252728;">
+      <% else %>
       <%= link_to "SIGN-IN", new_user_session_path %>
+      <% end %>
     </div>
-  </div>
-  <% end %>
+  </div> -->
 
   <!-- 固定ナビ -->
-
-
+<header id="luxbar" class="luxbar-fixed">
+    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
+    <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-amber">
+        <ul class="luxbar-navigation">
+            <li class="luxbar-header">
+                <a href="#" class="luxbar-brand">HANIMAL SEARCH</a>
+                <label class="luxbar-hamburger luxbar-hamburger-doublespin"
+                id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+            </li>
+            <li class="luxbar-item"><%= link_to " HOME", hospitals_path, class: "fa fa-home" %></li>
+            <li class="luxbar-item"><%= link_to " HOSPITAL", hospitals_path, class: "fa fa-hospital" %></li>
+            <li class="luxbar-item"><%= link_to " SEARCH", search_path, class: "fa fa-search" %></li>
+            <li class="luxbar-item fa fa-autoprefixer "><a href="#">ABOUT</a></li>
+            <li class="luxbar-item">
+              <% if user_signed_in? %>
+              <%= link_to "SIGN-IN", new_user_session_path, class: "fa fa-sign-in-alt" %>
+              <% else %>
+              <%= link_to "SIGN-OUT", destroy_user_session_path, method: :delete, class: "fa fa-sign-out-alt" %>
+              <% end %>
+            </li>
+        </ul>
+    </div>
+</header>
   <div class="container">
     <%= yield %>
   </div>
