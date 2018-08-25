@@ -25,6 +25,7 @@ table .table-btn a:not(.btn),
 .table .table-btn a:not(.btn) {
 	text-decoration: none;
 }
+
 // 詳細ボタン
 a.cp_primary {
 	position: relative;
@@ -34,7 +35,7 @@ a.cp_primary {
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
-	background: #2196F3;
+	background: #ff6f00;
 	border:solid 1px #fff;
 	overflow: hidden;
 }
@@ -126,7 +127,49 @@ a.cp_destroy:hover {
 	color: #fff;
 }
 // submitボタン
-
+.snip1434 {
+  font-family: 'Raleway', Arial, sans-serif;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0px 25px 0px 70px;
+  text-align: center;
+  display: inline-block;
+  margin: 12px 25px;
+  font-weight: 600;
+  outline: none;
+  position: relative;
+  font-size: 18px;
+  line-height: 50px;
+  background-color: #8a1a32;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.snip1434 i {
+  font-size: 4em;
+  width: 55px;
+  line-height: 50px;
+  position: absolute;
+  left: -5px;
+  top: 5px;
+  -webkit-transform: rotate(-25deg) scale(1);
+  transform: rotate(-25deg) scale(1);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.snip1434:hover,
+.snip1434.hover {
+  color: #ffffff;
+  background-color: #ac203f;
+}
+.snip1434:hover i,
+.snip1434.hover i {
+  -webkit-transform: rotate(-20deg) scale(1.3);
+  transform: rotate(-20deg) scale(1.3);
+}
 
 
 //

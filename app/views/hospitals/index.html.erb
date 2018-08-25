@@ -26,11 +26,10 @@
 
             <div class="field form-group">
                 <label>診療日</label><br>
-                <%= f.collection_check_boxes :days_id_eq, Day.all, :id, :name, include_hidden: false %>
+                <%= f.collection_check_boxes :days_id_eq, Day.all, :id, :name, include_hidden: false, class: "Check In" %>
             </div>
 
-
-            <div class="form-text"><%= f.submit "Search", class: "btn btn-primary btn-block" %></div>
+            <%= f.button fa_icon("search", text: "検索する"), class: "submit-button center-block" %>
             <% end %>
         </div>
 
@@ -88,27 +87,28 @@
                         <div class="table-btn">
                             <%= link_to '詳細', result, class: "cp_primary" %>
                             <% if current_user.try(:admin?) %>
-                            <%= link_to '編集', result, class: "cp_success" %>
+                            <%= link_to '編集', edit_hospital_path(result), class: "cp_success" %>
                             <%= link_to '削除', result, method: :delete, data: { confirm: '削除しますか?' }, class: "cp_destroy" %>
                             <% end %>
                         </div>
                     </td>
                 </tr>
                 <% end %>
+
+                <div class="pagination">
+                    <%= paginate @result , class: "pagenate" %>
+                </div>
+
             </tbody>
-
-
-
         </table>
         <% end %>
 
         <% if @result.nil? %>
-
         <%= render @hospitals %>
+        <% end %>
         <div class="pagination">
             <%= paginate @hospitals , class: "pagenate" %>
         </div>
-        <% end %>
 
         <div class="col-xs-12 hos-button">
           <% if current_user.try(:admin?) %>

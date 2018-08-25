@@ -67,7 +67,6 @@ gem 'pry-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
-gem "font-awesome-rails"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'cocoon'
@@ -75,4 +74,4 @@ gem 'kaminari'
 gem 'devise'
 gem 'rails-i18n'
 gem 'ransack'
-gem 'data-confirm-modal'
+gem 'font-awesome-rails'
