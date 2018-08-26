@@ -3,13 +3,17 @@
 </div>
 <script>
 	handler = Gmaps.build('Google');
-	handler.buildMap({ provider: {}, internal: { id: 'map' } }, function() {
-		markers = handler.addMarkers(<%=raw @hash.to_json %>);
-		handler.bounds.extendWith(markers);
-		handler.fitMapToBounds();
-		// 初期位置
-		// handler.getMap().setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+	handler.buildMap({ provider: {}, internal: { id: 'map' } },
+		function() {
+			markers = handler.addMarkers(<%=raw @hash.to_json %>);
+			handler.bounds.extendWith(markers);
+			// 全てのマーカーが地図に収まるように
+			// handler.fitMapToBounds();
+		// 初期位置(現在地)
+		navigator.geolocation.getCurrentPosition(function(position) {
+			handler.getMap().setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+		});
 		// 初期縮尺
-		// handler.getMap().setZoom(10);
+		handler.getMap().setZoom(14);
 	});
 </script>

@@ -8,7 +8,7 @@ class HospitalsController < ApplicationController
   end
 
   def index
-    @hospitals = Hospital.page(params[:page]).per(10)
+    @hospitals = Hospital.page(params[:page])
   end
 
   def show
@@ -63,11 +63,11 @@ class HospitalsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_hospital
       @hospital = Hospital.find(params[:id])
     end
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def hospital_params
       params.require(:hospital).permit( :name, :address, :latitude, :longitude, :tel, :hospital_image, pet_ids: [], day_ids: [], practice_times_attributes: [:id, :start_time, :end_time, :_destroy])
     end
