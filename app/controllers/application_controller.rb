@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 	def set_search
 		@search = Hospital.ransack(params[:q])
-		@result = @search.result.page(params[:page]).per(10)
+		@results = @search.result.page(params[:page])
 	end
 
 	protected
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
 	private
 	def search_params
-		params.require(:q).permit(:name_cont, :address_cont, :pets_id_eq, days_id_eq: [])
+		params.require(:q).permit(:name_cont, :address_cont, :pets_id_eq, days_id_in: [])
 	end
 
 end

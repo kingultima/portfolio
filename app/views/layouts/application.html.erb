@@ -18,53 +18,34 @@
 
 <body class="background">
 
-  <!-- ハンバーガーアイコン -->
-<!--   <div class="menu-icon" onclick="this.classList.toggle('hover');Drop(0)">
-    <div class="menu-bar menu-bar1"></div>
-    <div class="menu-bar menu-bar2"></div>
-    <div class="menu-bar menu-bar3"></div>
-  </div>
-
-  <div class="menu">
-    <div class="menu-con" style="background:#FF0039;"><p>HOME</p></div>
-    <div class="menu-con" style="background:#8542a7;"><%= link_to "HOSPITAL", hospitals_path %></div>
-    <div class="menu-con" style="background:#339414;"><%= link_to "SEARCH", search_path %></div>
-    <div class="menu-con" style="background:#2780E3;"><a href="#">ABOUT</a></div>
-    <div class="menu-con" style="background:#252728;">
-      <% if user_signed_in? %>
-      <%= link_to "SIGN-OUT", destroy_user_session_path, method: :delete %>
-      <% else %>
-      <%= link_to "SIGN-IN", new_user_session_path %>
-      <% end %>
-    </div>
-  </div> -->
-
   <!-- 固定ナビ -->
-<header id="luxbar" class="luxbar-fixed">
+  <header id="luxbar" class="luxbar-fixed">
     <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
     <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-amber">
-        <ul class="luxbar-navigation">
-            <li class="luxbar-header">
-                <a href="#" class="luxbar-brand">HANIMAL SEARCH</a>
-                <label class="luxbar-hamburger luxbar-hamburger-doublespin"
-                id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
-            </li>
-            <li class="luxbar-item"><%= link_to " HOME", hospitals_path, class: "fa fa-home" %></li>
-            <li class="luxbar-item"><%= link_to " HOSPITAL", hospitals_path, class: "fa fa-hospital" %></li>
-            <li class="luxbar-item"><%= link_to " SEARCH", search_path, class: "fa fa-search" %></li>
-            <li class="luxbar-item fa fa-autoprefixer "><a href="#">ABOUT</a></li>
-            <li class="luxbar-item">
-              <% if user_signed_in? %>
-              <%= link_to "SIGN-IN", new_user_session_path, class: "fa fa-sign-in-alt" %>
-              <% else %>
-              <%= link_to "SIGN-OUT", destroy_user_session_path, method: :delete, class: "fa fa-sign-out-alt" %>
-              <% end %>
-            </li>
-        </ul>
+      <ul class="luxbar-navigation">
+        <li class="luxbar-header">
+          <a href="#" class="luxbar-brand">HANIMAL SEARCH</a>
+          <label class="luxbar-hamburger luxbar-hamburger-doublespin"
+          id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+        </li>
+        <li class="luxbar-item"><%= link_to " HOME", hospitals_path, class: "fa fa-home" %></li>
+        <li class="luxbar-item"><%= link_to " HOSPITAL", hospitals_path, class: "fa fa-hospital" %></li>
+        <li class="luxbar-item"><%= link_to " SEARCH", search_path, class: "fa fa-search" %></li>
+        <li class="luxbar-item"><%= link_to " MAP", maps_path, class: "fa fa-map" %></li>
+        <li class="luxbar-item">
+          <% if user_signed_in? %>
+          <%= link_to " SIGN-OUT", destroy_user_session_path, method: :delete, class: "fa fa-sign-out" %>
+          <% else %>
+          <%= link_to " SIGN-IN", new_user_session_path, class: "fa fa-sign-in" %>
+          <% end %>
+        </li>
+      </ul>
     </div>
-</header>
+  </header>
   <div class="container">
+
     <%= yield %>
+
   </div>
 </body>
 

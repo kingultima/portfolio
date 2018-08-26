@@ -326,8 +326,11 @@ h3:after {
   text-decoration: none;
   color: #fff;
 }
+.luxbar-brand {
+  padding: 12px 24px;
+}
 .luxbar-item a {
-  padding: 23px 24px 18px 24px;
+  padding: 21px 12px;
 }
 // ボタンアニメーション
 .submit-button {
@@ -396,4 +399,5 @@ h3:after {
     text-align: center;
     font-size: 30px;
   }
+  .submit-button {width: 100%}
 }
