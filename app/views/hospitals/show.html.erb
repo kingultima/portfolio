@@ -61,7 +61,7 @@
 
     <div class="col-xs-12 hos-button">
       <% if current_user.try(:admin?) %>
-      <%= link_to '編集', edit_hospital_path(@hospital), class: "btn btn-success btn-color" %> 
+      <%= link_to '編集', edit_hospital_path(@hospital), class: "btn btn-success btn-color" %>
       <%= link_to '病院一覧へ', hospitals_path, class: "btn btn-warning" %>
       <% else %>
       <%= link_to '病院一覧へ', hospitals_path, class: "btn btn-warning" %>

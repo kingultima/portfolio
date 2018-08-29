@@ -15,6 +15,7 @@
     <table class="table table-striped background-content" >
         <thead>
             <tr>
+                <th class="col-sm-2"></th>
                 <th class="col-sm-2">病院名</th>
                 <th class="col-sm-1">診療日</th>
                 <th class="col-sm-2">診療時間</th>
@@ -29,6 +30,9 @@
         <tbody>
             <% @hospitals.each do |hospital| %>
             <tr>
+                <td>
+                    <%= attachment_image_tag hospital, :hospital_image, :fill, 100, 100, format: 'jpeg', fallback: "/images/noimage.jpg", :size => "100x100", class: "center-block" %>
+                </td>
                 <td>
                     <%= hospital.name %>
                 </td>
@@ -74,9 +78,8 @@
             <% end %>
         </tbody>
     </table>
-
-        <div class="pagination">
-            <%= paginate @hospitals , class: "pagenate" %>
-        </div>
-    </div>
+</div>
+<div class="pagination">
+    <%= paginate @hospitals , class: "pagenate" %>
+</div>
 </div>
