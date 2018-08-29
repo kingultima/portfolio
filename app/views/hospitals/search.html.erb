@@ -8,10 +8,11 @@
 
     <% if @results.any? %>
     <%= render 'result', results: @results %>
-    <% end %>
+    <% else %>
+    <div class="search-not-result">
+      <h3>条件にあう検索結果はありませんでした。</h3>
+      <% end %>
+    </div>
 
-    <% if @results.nil? %>
-    <h2>条件にあう検索結果はありませんでした。</h2>
-    <% end %>
   </div>
 </div>
