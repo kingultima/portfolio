@@ -1,11 +1,15 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
-  # before_action :admin_user,　only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_user,　only: [:new, :create, :edit, :update, :destroy],except: [:top, :show, :index, :search]
 
-  def search
+  def top
   end
 
-  def map
+  def search
+    @search = Hospital.ransack(params[:q])
+    @results = @search.result.includes(:days, :pets).page(params[:page])
+    @pets = Pet.all
+    @days = Day.all
   end
 
   def index
@@ -73,7 +77,17 @@ class HospitalsController < ApplicationController
     params.require(:hospital).permit( :name, :address, :latitude, :longitude, :tel, :hospital_image, pet_ids: [], day_ids: [], practice_times_attributes: [:id, :start_time, :end_time, :_destroy])
   end
 
+  def search_params
+    params.require(:q).permit(:name_cont, :address_cont, :pets_id_eq, :days_id_in)
+  end
+
   def admin_user
-    redirect_to(root_path) unless current_user.admin?
+    if user_signed_in?
+     unless current_user.admin == true
+      redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 end

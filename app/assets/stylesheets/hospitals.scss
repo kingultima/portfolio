@@ -1,7 +1,31 @@
-// search index
+// top
+.top-background {
+	width: 100%;
+	height: 613px;
+	background-image: url(/images/toraDSC00442_TP_V.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat:no-repeat;
+}
+
+.top-background h1 {
+	color: white;
+	border: 0;
+	background: none;
+}
+.top-background p {
+	color: white;
+}
+// search
 .search-box {
-	width: 80%;
+	width: 95%;
 	margin: 50px auto;
+	padding: 30px 30px;
+	color: #000000;
+	border-radius: 30px;
+	background-color: #F4F5F7;
+	box-shadow: 0px 0px 0px 10px #F4F5F7;
+	border: dashed 5px white;
 }
 .search-box .form-group {
 	margin: 30px 10%;
@@ -12,7 +36,6 @@
 .search-box label {
 	margin-top: 10px;
 	margin-right: 10px;
-	margin-left: 10px;
 }
 .search-box input {
 	margin-right: 10px;
@@ -131,51 +154,6 @@ a.cp_destroy:hover {
 	text-decoration: none;
 	color: #fff;
 }
-// submitボタン
-.snip1434 {
-  font-family: 'Raleway', Arial, sans-serif;
-  border: none;
-  border-radius: 5px;
-  overflow: hidden;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 0px 25px 0px 70px;
-  text-align: center;
-  display: inline-block;
-  margin: 12px 25px;
-  font-weight: 600;
-  outline: none;
-  position: relative;
-  font-size: 18px;
-  line-height: 50px;
-  background-color: #8a1a32;
-  letter-spacing: 1px;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.snip1434 i {
-  font-size: 4em;
-  width: 55px;
-  line-height: 50px;
-  position: absolute;
-  left: -5px;
-  top: 5px;
-  -webkit-transform: rotate(-25deg) scale(1);
-  transform: rotate(-25deg) scale(1);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.snip1434:hover,
-.snip1434.hover {
-  color: #ffffff;
-  background-color: #ac203f;
-}
-.snip1434:hover i,
-.snip1434.hover i {
-  -webkit-transform: rotate(-20deg) scale(1.3);
-  transform: rotate(-20deg) scale(1.3);
-}
-
 
 //
 .hos-mb-50 {
@@ -191,19 +169,14 @@ a.cp_destroy:hover {
 .hos-mt-15 {
 	margin-top: 15px;
 }
+.hos-mt-15 .badge {
+	margin-bottom: 10px;
+}
 .hos-button {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
-#map {
-	margin: 30px auto;
-	height: 500px;
-}
 
-@media screen and (max-width: 767px) {
-	#map {
-		height: 350px;
-		width: 95%;
-		margin: 50 auto;
-	}
+.hos-mt-15 li {
+	text-align: center;
 }

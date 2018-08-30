@@ -22,17 +22,19 @@
  @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
  body {
-  margin-top: 60px;
+  margin-top: 58px;
   font-family: Lato, "Noto Sans JP", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
 .background {
-  background-image: url(/images/memphis-colorful.png);
+  background-image: url(/images/light-veneer.png);
 }
 
 .row .background-content {
-  background-image: url(/images/crossword.png);
-  // background: rgba(255,255,255,0.8);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  // background-image: url(/images/crossword.png);
+  background-color: #F4F5F7;
 }
 
 * {
@@ -88,23 +90,28 @@ h1 {
 }
 
 h2 {
-  width: 100%;
-  padding: 0.5em;
-  position: relative;
-  background: -webkit-repeating-linear-gradient(-45deg, #fff, #fff 4px, rgba(204,102,51,.1) 4px, rgba(204,102,51,.1) 8px);
-  background: repeating-linear-gradient(-45deg, #fff, #fff 4px, rgba(204,102,51,.1) 4px, rgba(204,102,51,.1) 8px);
+position: relative;
+padding: .5em;
 }
-h2:before, h2:after {
-  content: "";
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  left: 0;
-  background: -webkit-repeating-linear-gradient(135deg, #fff, #fff 3px, #3878d1 3px, #3878d1 6px, white 6px, white 9px, deeppink 9px, deeppink 12px);
-  background: repeating-linear-gradient(135deg, #fff, #fff 3px, #3878d1 3px, #3878d1 6px, white 6px, white 9px, deeppink 9px, deeppink 12px);
+h2:before,
+h2:after {
+position: absolute;
+left: 0;
+content: '';
+width: 100%;
+height: 5px;
+box-sizing: border-box;
 }
-h2:before { top: -4px; }
-h2:after { bottom: -4px; }
+h2:before {
+top: 0;
+border-top: 2px solid #ff6f00;
+border-bottom: 1px solid #ff6f00;
+}
+h2:after {
+bottom: 0;
+border-top: 1px solid #ff6f00;
+border-bottom: 2px solid #ff6f00;
+}
 
 h3 {
   width: 100%;
@@ -124,133 +131,10 @@ h3:after {
   z-index: 1;
 }
 
-// ハンバーガーアイコン
-// .menu-icon {
-//   width: 50px;
-//   height: 50px;
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   margin: 10px 15px;
-//   transform:scale(0.8); //要素を拡大・縮小表示する
-//   padding: 0;
-//   cursor: pointer; //マウスカーソルが変わる
-//   z-index:20; //　//z-index がより大きな要素が、より小さな要素の上にかぶさる
-// }
-// .menu-bar {
-//   width: 50px;
-//   height: 5px;
-//   background: orange;
-//   position: absolute;
-//   transition: all 0.5s; //変化するすべてのプロパティへの適用
-// }
-// .menu-bar1 {
-//   margin-top: 9px
-// }
-// .menu-bar2 {
-//   margin-top: 23px
-// }
-// .menu-bar3 {
-//   margin-top: 37px
-// }
-// .menu-icon.hover .menu-bar1 {
-//   -webkit-transform:
-//   rotate(45deg) scaleX(0.7);
-//   margin-top: 22px;
-// }
-// .menu-icon.hover .menu-bar2 {
-//   opacity: 0
-// }
-// .menu-icon.hover .menu-bar3 {
-//   -webkit-transform: rotate(-45deg) scaleX(0.7);
-//   margin-top: 22px;
-// }
-// // ナビゲーションバー
-// .menu {
-//   width: 100%;
-//   height: 75px;
-//   position: fixed;
-//   display: -webkit-flex;
-//   display: flex; //要素の横並び
-//   -webkit-flex-wrap: wrap;
-//   flex-wrap: wrap; //折り返し
-//   z-index: 1;
-// }
-
-// .menu-con {
-//   -webkit-flex-grow: 1;
-//   flex-basis: 0; //基本幅
-//   flex-grow: 1; //伸び率(basisに影響、自動的に決まる)
-//   display: -webkit-flex;
-//   display: flex;
-//   -webkit-justify-content:space-around;
-//   position:relative;
-//   top: -200px;
-//   transition:all 0.5s;
-//   z-index:1;
-// }
-// // 後で消す
-// .menu-con p {
-//   margin: 0;
-//   height:20px;
-//   -webkit-align-self:center;
-//   color:white;
-//   font-size:25px;
-//   z-index:2;
-//   cursor:pointer;
-// }
-// .menu-con p:before {
-//   content: "";
-//   display: block;
-//   position:absolute;
-//   top:0;
-//   left:0;
-//   z-index:1;
-//   width:100%;
-//   height: 100%;
-//   opacity: 1;
-//   background: rgba(0,0,0,0);
-//   -webkit-transition: all 0.5s;
-//   transition: all 0.5s;
-// }
-// .menu-con:hover p:before {
-//   background: rgba(0,0,0,0.2);
-// }
-// //
-// .menu-con a {
-//   // height:20px;
-//   text-decoration: none;
-//   -webkit-align-self:center;
-//   color:white;
-//   font-size:25px;
-//   z-index:2;
-//   cursor:pointer;
-// }
-// //
-// .menu-con a:before {
-//   content: "";
-//   display: block;
-//   position:absolute;
-//   top:0;
-//   left:0;
-//   z-index:1;
-//   width:100%;
-//   height: 100%;
-//   opacity: 1;
-//   background: rgba(0,0,0,0);
-//   -webkit-transition: all 0.5s;
-//   transition: all 0.5s;
-// }
-// .menu-con:hover a:before {
-//   background: rgba(0,0,0,0.2);
-// }
-// @media screen and (min-width: 768px) {
-//   // .menu-icon {display: none;}
-// }
-
-// @media screen and (max-width: 767px) {
-//   .menu-con {min-width:100%;}
-// }
+// device
+.device-form {
+  padding: 0 15%;
+}
 
 // バッジカラー
 .badge-orange{

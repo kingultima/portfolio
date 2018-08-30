@@ -1,7 +1,9 @@
+<br>
 <div class="row">
   <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 background-content">
 
-    <h2>ユーザー新規登録</h2>
+    <h2 class="text-center">ユーザー新規登録</h2>
+    <br>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <% if @user.errors.any? %>
@@ -16,39 +18,44 @@
     </div>
     <% end %>
 
-    <div class="field　field form-group">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "ユーザー名を入力" %>
-    </div>
-
-    <div class="field　field form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "例：example@example.com" %>
-    </div>
-
-    <div class="field　field form-group">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワードを入力" %>
-    </div>
-
-    <div class="field　field form-group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワードを再入力" %>
-    </div>
-
-    <% if @noadmin %>
-    <div><%= f.label :admin %><br />
-      <%= f.check_box :admin, { }, true, false %></div>
-      <% end %>
-
-      <%= f.button fa_icon("sign-in", text: "登録する"), class: "submit-button center-block" %>
-      <% end %>
-
-      <div style="margin-top: 20px;">
-        <%= render "devise/shared/links" %>
+    <form>
+      <div class="field　field form-group device-form">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "ユーザー名を入力" %>
       </div>
+
+      <div class="field　field form-group device-form">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "例：example@example.com" %>
+      </div>
+
+      <div class="field　field form-group device-form">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワードを入力" %>
+      </div>
+
+      <div class="field　field form-group device-form">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワードを再入力" %>
+      </div>
+
+      <% unless User.exists?(admin: true) %>
+      <%= f.label :admin %><br />
+      <%= f.check_box :admin, { }, true, false %>
+      <% end %>
+      <br>
+      <br>
+
+    </form>
+
+    <%= f.button fa_icon("sign-in", text: "登録する"), class: "submit-button center-block" %>
+    <% end %>
+
+    <div class="device-form">
+      <%= render "devise/shared/links" %>
     </div>
   </div>
+</div>
