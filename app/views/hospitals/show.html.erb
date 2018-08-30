@@ -42,6 +42,14 @@
             <%= pet.name %><span> </span>
             <% end %>
           </div>
+
+          <% if current_user.try(:admin?) %>
+          <div class="hos-mt-15">
+            <span class="badge badge-pill badge-orange">緯度・経度</span><br>
+            緯度：<%= @hospital.latitude %><br>
+            経度：<%= @hospital.longitude %>
+            <% end %>
+          </div>
         </div>
       </div>
 
