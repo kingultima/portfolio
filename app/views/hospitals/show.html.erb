@@ -23,7 +23,7 @@
         <div class="hos-mt-15">
           <span class="badge badge-pill badge-orange">診療日</span><br>
           <% @hospital.days.each do |day| %>
-          <%= day.name %>
+          <span>(</span><%= day.name %><span>)</span>
           <% end %>
         </div>
 
@@ -38,35 +38,45 @@
         <div class="hos-mt-15">
           <span class="badge badge-pill badge-orange">ペット種別</span><br>
           <% @hospital.pets.each do |pet| %>
-          <%= pet.name %>
+          <%= pet.name %><span> </span>
           <% end %>
         </div>
       </div>
     </div>
 
     <h2 class="text-center">アクセス</h2>
-    <div class="col-xs-12">
-      <div id="map"></div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="map"></div>
+      </div>
     </div>
 
-    <script>
-      handler = Gmaps.build('Google');
-      handler.buildMap({ provider: {}, internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%=raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        handler.getMap().setZoom(15);
-      });
-    </script>
+    <h2 class="text-center">近くにある病院</h2>
 
-    <div class="col-xs-12 hos-button">
-      <% if current_user.try(:admin?) %>
-      <%= link_to '編集', edit_hospital_path(@hospital), class: "btn btn-success btn-color" %>
-      <%= link_to '病院一覧へ', hospitals_path, class: "btn btn-warning" %>
-      <% else %>
-      <%= link_to '病院一覧へ', hospitals_path, class: "btn btn-warning" %>
-      <% end %>
+    <ul class="hos-mt-15">
+      <% for @hospital in @hospital.nearbys(10) %>
+      <li><%= link_to @hospital.name, @hospital %>
+        (<%= @hospital.distance.round(2) %> km)</li>
+        <% end %>
+      </ul>
+
+      <div class="col-xs-12 hos-button">
+        <% if current_user.try(:admin?) %>
+        <%= link_to '編集', edit_hospital_path(@hospital), class: "btn btn-success btn-color" %>
+        <%= link_to '病院一覧へ', hospitals_path, class: "btn btn-warning" %>
+        <% else %>
+        <%= link_to '病院一覧へ', hospitals_path, class: "btn btn-warning" %>
+        <% end %>
+      </div>
     </div>
-
   </div>
-</div>
+
+  <script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(15);
+    });
+  </script>

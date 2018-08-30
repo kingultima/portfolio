@@ -1,8 +1,6 @@
 <div class="row">
     <p id="notice"><%= notice %></p>
 
-    <%= render 'search', search: @search %>
-
     <h1>病院一覧</h1>
 
     <div class="hos-button">
@@ -15,16 +13,16 @@
     <table class="table table-striped background-content" >
         <thead>
             <tr>
-                <th class="col-sm-2"></th>
-                <th class="col-sm-2">病院名</th>
-                <th class="col-sm-1">診療日</th>
-                <th class="col-sm-2">診療時間</th>
-                <th class="col-sm-2">住所</th>
-                <th class="col-sm-1">診療動物</th>
+                <th class="col-xs-2 col-sm-2"></th>
+                <th class="col-xs-1 col-sm-2">病院名</th>
+                <th class="col-xs-1 col-sm-1">診療日</th>
+                <th class="col-xs-2 col-sm-2">診療時間</th>
+                <th class="col-xs-2 col-sm-2">住所</th>
+                <th class="col-xs-1 col-sm-1">診療動物</th>
                 <% if current_user.try(:admin?) %>
-                <th class="col-sm-1">緯度・経度</th>
+                <th class="col-xs-1 col-sm-1">緯度・経度</th>
                 <% end %>
-                <th class="col-sm-1"></th>
+                <th class="col-xs-1 col-sm-1"></th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +38,7 @@
                     <% hospital.days.each do |day| %>
                     <div class="badge badge-orange">
                         <%= day.name %>
-                    </div>
+                    </div><br>
                     <% end %>
                 </td>
                 <td>
@@ -56,15 +54,15 @@
                     <% hospital.pets.each do |pet| %>
                     <div class="badge badge-pink">
                         <%= pet.name %>
-                    </div>
+                    </div><br>
                     <% end %>
                 </td>
+                <% if current_user.try(:admin?) %>
                 <td>
-                    <% if current_user.try(:admin?) %>
                     緯度：<%= hospital.latitude %><br>
                     経度：<%= hospital.longitude %>
-                    <% end %>
                 </td>
+                <% end %>
                 <td>
                     <div class="table-btn">
                         <%= link_to '詳細', hospital, class: "cp_primary" %>

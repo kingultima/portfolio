@@ -1,18 +1,15 @@
-<div class="hospital-index">
-  <div class="row">
-    <p id="notice">
-      <%= notice %>
-    </p>
+<div class="row">
+  <p id="notice">
+    <%= notice %>
+  </p>
 
-    <%= render 'search', search: @search %>
+  <%= render 'search', search: @search %>
 
-    <% if @results.any? %>
-    <%= render 'result', results: @results %>
-    <% else %>
-    <div class="search-not-result">
-      <h3>条件にあう検索結果はありませんでした。</h3>
-      <% end %>
-    </div>
-
+  <% if @results.any? %>
+  <%= render 'result', results: @results %>
+  <% else %>
+  <div class="search-not-result">
+    <h3>条件にあう検索結果はありませんでした。</h3>
+    <% end %>
   </div>
 </div>

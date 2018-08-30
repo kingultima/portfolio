@@ -2,11 +2,12 @@
     <table class="table table-striped background-content" >
         <thead>
             <tr>
+                <th class="col-sm-2"></th>
                 <th class="col-sm-2">病院名</th>
-                <th class="col-sm-2">診療日</th>
+                <th class="col-sm-1">診療日</th>
                 <th class="col-sm-2">診療時間</th>
                 <th class="col-sm-2">住所</th>
-                <th class="col-sm-2">診療動物</th>
+                <th class="col-sm-1">診療動物</th>
                 <% if current_user.try(:admin?) %>
                 <th class="col-sm-1">緯度・経度</th>
                 <% end %>
@@ -16,6 +17,9 @@
         <tbody>
             <% results.each do |result| %>
             <tr>
+                <td>
+                    <%= attachment_image_tag result, :hospital_image, :fill, 100, 100, format: 'jpeg', fallback: "/images/noimage.jpg", :size => "100x100", class: "center-block" %>
+                </td>
                 <td>
                     <%= result.name %>
                 </td>

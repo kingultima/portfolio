@@ -16,12 +16,13 @@
       <div class="field form-group">
         <label>診療対象動物</label><br>
         <label><%= f.radio_button 'pets_id_eq', '', {:checked => true} %> 指定なし</label>
-        <%= f.collection_radio_buttons :pets_id_eq, Pet.all, :id, :name, include_hidden: false %>
+        <%= f.collection_radio_buttons :pets_id_eq, @pets, :id, :name, include_hidden: false %>
       </div>
 
       <div class="field form-group">
         <label>診療日</label><br>
-        <%= f.collection_check_boxes :days_id_in, Day.all, :id, :name, include_hidden: false %>
+        <label><%= f.radio_button 'days_id_eq', '', {:checked => true} %> 指定なし</label>
+        <%= f.collection_radio_buttons :days_id_eq, @days, :id, :name, include_hidden: false %>
       </div>
 
       <%= f.button fa_icon("search", text: "検索する"), class: "submit-button center-block" %>
