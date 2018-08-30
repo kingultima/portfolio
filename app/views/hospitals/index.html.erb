@@ -1,83 +1,85 @@
-<div class="row">
-    <p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <p id="notice"><%= notice %></p>
 
-    <h1>病院一覧</h1>
+        <h1>病院一覧</h1>
 
-    <div class="hos-button">
-      <% if current_user.try(:admin?) %>
-      <%= link_to '病院を追加する', new_hospital_path, class: "btn btn-primary" %>
-      <% end %>
-  </div>
+        <div class="hos-button">
+          <% if current_user.try(:admin?) %>
+          <%= link_to '病院を追加する', new_hospital_path, class: "btn btn-primary" %>
+          <% end %>
+      </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped background-content" >
-        <thead>
-            <tr>
-                <th class="col-xs-2 col-sm-2"></th>
-                <th class="col-xs-1 col-sm-2">病院名</th>
-                <th class="col-xs-1 col-sm-1">診療日</th>
-                <th class="col-xs-2 col-sm-2">診療時間</th>
-                <th class="col-xs-2 col-sm-2">住所</th>
-                <th class="col-xs-1 col-sm-1">診療動物</th>
-                <% if current_user.try(:admin?) %>
-                <th class="col-xs-1 col-sm-1">緯度・経度</th>
-                <% end %>
-                <th class="col-xs-1 col-sm-1"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @hospitals.each do |hospital| %>
-            <tr>
-                <td>
-                    <%= attachment_image_tag hospital, :hospital_image, :fill, 100, 100, format: 'jpeg', fallback: "/images/noimage.jpg", :size => "100x100", class: "center-block" %>
-                </td>
-                <td>
-                    <%= hospital.name %>
-                </td>
-                <td>
-                    <% hospital.days.each do |day| %>
-                    <div class="badge badge-orange">
-                        <%= day.name %>
-                    </div><br>
-                    <% end %>
-                </td>
-                <td>
-                    <% hospital.practice_times.each do |time| %>
-                    <%= time.start_time.to_s(:time) %> ～
-                    <%= time.end_time.to_s(:time) %><br>
-                    <% end %>
-                </td>
-                <td>
-                    <%= hospital.address %>
-                </td>
-                <td>
-                    <% hospital.pets.each do |pet| %>
-                    <div class="badge badge-pink">
-                        <%= pet.name %>
-                    </div><br>
-                    <% end %>
-                </td>
-                <% if current_user.try(:admin?) %>
-                <td>
-                    緯度：<%= hospital.latitude %><br>
-                    経度：<%= hospital.longitude %>
-                </td>
-                <% end %>
-                <td>
-                    <div class="table-btn">
-                        <%= link_to '詳細', hospital, class: "cp_primary" %>
+          <div class="table-responsive">
+            <table class="table table-striped background-content" >
+                <thead>
+                    <tr>
+                        <th class="col-xs-2 col-sm-2"></th>
+                        <th class="col-xs-1 col-sm-2">病院名</th>
+                        <th class="col-xs-1 col-sm-1">診療日</th>
+                        <th class="col-xs-2 col-sm-2">診療時間</th>
+                        <th class="col-xs-2 col-sm-2">住所</th>
+                        <th class="col-xs-1 col-sm-1">診療動物</th>
                         <% if current_user.try(:admin?) %>
-                        <%= link_to '編集', edit_hospital_path(hospital), class: "cp_success" %>
-                        <%= link_to '削除', hospital, method: :delete, data: { confirm: '削除しますか?' }, class: "cp_destroy" %>
+                        <th class="col-xs-1 col-sm-1">緯度・経度</th>
                         <% end %>
-                    </div>
-                </td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div>
-<div class="pagination">
-    <%= paginate @hospitals , class: "pagenate" %>
-</div>
+                        <th class="col-xs-1 col-sm-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @hospitals.each do |hospital| %>
+                    <tr>
+                        <td>
+                            <%= attachment_image_tag hospital, :hospital_image, :fill, 100, 100, format: 'jpeg', fallback: "/images/noimage.jpg", :size => "100x100", class: "center-block" %>
+                        </td>
+                        <td>
+                            <%= hospital.name %>
+                        </td>
+                        <td>
+                            <% hospital.days.each do |day| %>
+                            <div class="badge badge-orange">
+                                <%= day.name %>
+                            </div><br>
+                            <% end %>
+                        </td>
+                        <td>
+                            <% hospital.practice_times.each do |time| %>
+                            <%= time.start_time.to_s(:time) %> ～
+                            <%= time.end_time.to_s(:time) %><br>
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= hospital.address %>
+                        </td>
+                        <td>
+                            <% hospital.pets.each do |pet| %>
+                            <div class="badge badge-pink">
+                                <%= pet.name %>
+                            </div><br>
+                            <% end %>
+                        </td>
+                        <% if current_user.try(:admin?) %>
+                        <td>
+                            緯度：<%= hospital.latitude %><br>
+                            経度：<%= hospital.longitude %>
+                        </td>
+                        <% end %>
+                        <td>
+                            <div class="table-btn">
+                                <%= link_to '詳細', hospital, class: "cp_primary" %>
+                                <% if current_user.try(:admin?) %>
+                                <%= link_to '編集', edit_hospital_path(hospital), class: "cp_success" %>
+                                <%= link_to '削除', hospital, method: :delete, data: { confirm: '削除しますか?' }, class: "cp_destroy" %>
+                                <% end %>
+                            </div>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <%= paginate @hospitals , class: "pagenate" %>
+        </div>
+    </div>
 </div>

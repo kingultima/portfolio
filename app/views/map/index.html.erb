@@ -9,12 +9,13 @@
 			handler.bounds.extendWith(markers);
 			// 全てのマーカーが地図に収まるように
 			// handler.fitMapToBounds();
+			// geolocationに対応しているかどうか
 		if (navigator.geolocation) {
 			alert("この端末では位置情報が取得できます");
 		} else {
 			alert("この端末では位置情報が取得できません");
 		}
-
+		// 現在地を取得する
 		navigator.geolocation.getCurrentPosition(function(position) {
 			handler.getMap().setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
 		});

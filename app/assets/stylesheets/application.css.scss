@@ -22,7 +22,7 @@
  @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
  body {
-  margin-top: 60px;
+  margin-top: 58px;
   font-family: Lato, "Noto Sans JP", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
@@ -31,6 +31,8 @@
 }
 
 .row .background-content {
+  margin-top: 30px;
+  margin-bottom: 30px;
   // background-image: url(/images/crossword.png);
   background-color: #F4F5F7;
 }
