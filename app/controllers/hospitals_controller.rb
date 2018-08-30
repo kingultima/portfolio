@@ -1,6 +1,6 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
-  # before_action :admin_user,　only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_user,　only: [:new, :create, :edit, :update, :destroy],except: [:top, :show, :index, :search]
 
   def top
   end
@@ -82,6 +82,12 @@ class HospitalsController < ApplicationController
   end
 
   def admin_user
-    redirect_to(root_path) unless current_user.admin?
+    if user_signed_in?
+     unless current_user.admin == true
+      redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 end

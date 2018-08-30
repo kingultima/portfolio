@@ -7,7 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user = User.new
-    @noadmin = @user.where('admin = ?', true).empty?
   end
 
   # POST /resource
